@@ -1,0 +1,24 @@
+{% extends 'home/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+
+<h3>{{ h3 }}</h3>
+<h7>{{ h7 }}</h7>
+<hr>
+
+<form method="post">
+
+    {% csrf_token %}
+    {{form|crispy}}
+    <p></p>
+    {% if botao == 'Excluir' %}
+        <button class="btn btn-danger" type="submit">{{ botao }}</button>
+    {% else %}
+        <button class="btn btn-success" type="submit">{{ botao }}</button>
+    {% endif %}
+
+</form>
+
+{% endblock %}

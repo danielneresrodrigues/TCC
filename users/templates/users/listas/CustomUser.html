@@ -1,0 +1,41 @@
+{% extends 'home/base.html' %}
+
+{% block conteudo %}
+  <h3>Lista de usuários cadastrados</h1>
+
+  <br />
+
+  <a href="{% url 'criar-usuario' %}" class="btn btn-primary" role="button" aria-disabled="true">Cadastrar novo usúario</a>
+
+  <hr />
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>
+          <span style="float: right;">Opções</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for usuario in object_list %}
+        <tr>
+          <td>{{ usuario.first_name }} {{ usuario.last_name }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>
+            <span style="float: right;">
+                <a class="btn btn-secondary btn-sm" href="{% url 'editar-usuario' usuario.id %}" role="button">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-danger btn-sm" href="{% url 'excluir-usuario' usuario.id %}" role="button">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </span>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

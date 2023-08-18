@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+
+{% block conteudo %}
+
+<div>
+  <h3>Marcações</h3>
+  <h6>Historico de marcações feitas hoje ({% now "j F Y" %})</h6>
+  <a href="{% url 'inserir-marcacao' %}" class="btn btn-primary">Inserir marcação</a>
+  <hr>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody>
+    {% for marcacao in object_list %}
+    <tr>
+      <td>{{ marcacao.data }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
